@@ -1,0 +1,51 @@
+export default {
+  colors: {
+    backgroundColor: "black",
+    primary: "#02A4FF",
+    secondary: "#4ecdc4",
+    black: "#000",
+    white: "#fff",
+    medium: "#6e6969",
+    light: "#f8f4f4",
+    dark: "#0c0c0c",
+    danger: "#ff5252",
+    darkPurp: "#3D5ECD",
+    grey0: "#2C2C2E",
+    grey1: "#393939",
+    grey2: "#7E7E7E",
+    grey3: "#F1F2F3",
+    darkBlue: "#19242E",
+    darkBlue2: "#0D181E",
+    error: "red",
+    success: "green",
+    highText: "rgba(255,255,255,0.87)",
+    mediumText: "rgba(255,255,255,0.65)",
+    lowText: "rgba(255,255,255,0.35)",
+  },
+  spacing: {
+    xs: 4,
+    s: 9,
+    m: 15,
+    l: 24,
+    xl: 40,
+  },
+  textVariants: {
+    header: {
+      fontSize: 24,
+    },
+    title: {
+      fontSize: 17,
+    },
+    subTitle: {
+      fontSize: 14,
+    },
+    simpleDescription: {
+      color: "white",
+      fontSize: 15,
+      textAlign: "center",
+      paddingHorizontal: 30,
+      marginTop: 20,
+      marginBottom: 50,
+    },
+  },
+};
