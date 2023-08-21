@@ -1,23 +1,21 @@
-//Component to display the target muscles (front and back) for a day's workout
-
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Image } from "react-native";
 
-const TargetMuscles = () => {
-  return (
-    <View style={styles.container}>
-      <Text>Target Muscles</Text>
-    </View>
-  );
+interface WorkoutItemProps {
+  workout: {
+    id: number;
+    title: string;
+    imageUrl: number;
+  };
+  onButtonPress?: (id: number) => void;
+}
+
+const TargetMuscles: React.FC<WorkoutItemProps> = ({ workout }) => {
+  return <Image source={workout.imageUrl} style={styles.image} />;
 };
 
 export default TargetMuscles;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
+  image: { height: 300, width: 150, resizeMode: "contain" },
 });

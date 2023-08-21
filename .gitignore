@@ -36,3 +36,4 @@ yarn-error.*
 
 # misc
 assets/images
+app/config/exerciseImage.js
