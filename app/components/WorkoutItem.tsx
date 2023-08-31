@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
 import theme from "../config/theme";
+import { Entypo } from "@expo/vector-icons";
+import Modal from "react-native-modal";
 
 interface WorkoutSet {
   reps: number;
@@ -27,6 +29,7 @@ const WorkoutItem: React.FC<WorkoutItemProps> = ({
   const [initialClicks, setInitialClicks] = useState<boolean[]>(
     new Array(workout.sets.length).fill(false)
   );
+  const [modalVisible, setModalVisible] = useState(false);
 
   const handleButtonClick = (index: number) => {
     if (!initialClicks[index]) {
@@ -70,6 +73,40 @@ const WorkoutItem: React.FC<WorkoutItemProps> = ({
           ))}
         </View>
       </View>
+      <View>
+        <TouchableOpacity onPress={() => setModalVisible(true)}>
+          <Entypo name="dots-three-vertical" size={16} color="#fff" />
+        </TouchableOpacity>
+      </View>
+
+      <Modal
+        backdropColor={theme.colors.darkBlue}
+        isVisible={modalVisible}
+        onBackdropPress={() => setModalVisible(false)}
+        backdropTransitionOutTiming={0}
+      >
+        <View style={styles.modalContent}>
+          <Image source={workout.imageUrl} style={styles.modalImage} />
+          <Text style={styles.modalTitle}>{workout.title}</Text>
+          <View
+            style={{
+              borderBottomColor: theme.colors.grey1,
+              borderBottomWidth: 1,
+              marginBottom: 10,
+            }}
+          />
+
+          <TouchableOpacity style={styles.editButton}>
+            <Text>Edit Level</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.closeModalButton}
+            onPress={() => setModalVisible(false)}
+          >
+            <Text>Close</Text>
+          </TouchableOpacity>
+        </View>
+      </Modal>
     </View>
   );
 };
@@ -90,6 +127,12 @@ const styles = StyleSheet.create({
     height: 100,
     resizeMode: "contain",
     marginRight: 20,
+  },
+  modalImage: {
+    width: 200,
+    height: 200,
+    resizeMode: "contain",
+    alignSelf: "center",
   },
   title: {
     marginVertical: 5,
@@ -114,5 +157,31 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: "white",
+  },
+  modalContent: {
+    alignSelf: "center",
+    backgroundColor: theme.colors.black,
+    padding: 20,
+    borderRadius: 10,
+    width: 300,
+  },
+  closeModalButton: {
+    backgroundColor: theme.colors.grey0,
+    padding: 10,
+    borderRadius: 5,
+    alignItems: "center",
+  },
+  modalTitle: {
+    fontSize: 18,
+    marginBottom: 10,
+    alignSelf: "center",
+    color: "#fff",
+  },
+  editButton: {
+    backgroundColor: theme.colors.primary,
+    padding: 10,
+    borderRadius: 5,
+    alignItems: "center",
+    marginBottom: 10,
   },
 });
