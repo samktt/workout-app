@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
-import theme from "../config/theme";
 import { Entypo } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
 import Modal from "react-native-modal";
+
+import theme from "../config/theme";
 
 interface WorkoutSet {
   reps: number;
@@ -86,25 +89,113 @@ const WorkoutItem: React.FC<WorkoutItemProps> = ({
         backdropTransitionOutTiming={0}
       >
         <View style={styles.modalContent}>
+          <TouchableOpacity
+            style={{ top: 10, right: 10, position: "absolute" }}
+            onPress={() => setModalVisible(false)}
+          >
+            <AntDesign name="close" size={24} color={theme.colors.grey3} />
+          </TouchableOpacity>
           <Image source={workout.imageUrl} style={styles.modalImage} />
           <Text style={styles.modalTitle}>{workout.title}</Text>
           <View
             style={{
               borderBottomColor: theme.colors.grey1,
               borderBottomWidth: 1,
-              marginBottom: 10,
+              marginBottom: 20,
+              marginTop: 10,
             }}
           />
 
-          <TouchableOpacity style={styles.editButton}>
-            <Text>Edit Level</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.closeModalButton}
-            onPress={() => setModalVisible(false)}
-          >
-            <Text>Close</Text>
-          </TouchableOpacity>
+          <Text style={{ color: "#fff", marginBottom: 10 }}>Edit Reps</Text>
+          <View style={styles.buttonContainer}>
+            {workout.sets.map((set, index) => (
+              <View key={index}>
+                <TouchableOpacity>
+                  <View style={styles.changeRepButton}>
+                    <Entypo name="plus" size={16} color="#000" />
+                  </View>
+                </TouchableOpacity>
+                <View
+                  style={[
+                    styles.roundButton,
+                    {
+                      backgroundColor: theme.colors.black,
+                      borderColor: theme.colors.primary,
+                      borderWidth: 2,
+                    },
+                  ]}
+                >
+                  <Text style={styles.buttonText}>{displayedReps[index]}</Text>
+                </View>
+                <TouchableOpacity>
+                  <View
+                    style={[
+                      styles.changeRepButton,
+                      {
+                        backgroundColor: "#000",
+                        borderColor: theme.colors.primary,
+                        borderWidth: 1,
+                      },
+                    ]}
+                  >
+                    <Entypo
+                      name="minus"
+                      size={16}
+                      color={theme.colors.primary}
+                    />
+                  </View>
+                </TouchableOpacity>
+              </View>
+            ))}
+          </View>
+
+          <View
+            style={{
+              borderBottomColor: theme.colors.grey1,
+              borderBottomWidth: 1,
+              marginBottom: 20,
+              marginTop: 10,
+            }}
+          />
+          <Text style={{ color: "#fff", marginBottom: 10 }}>Edit Weight</Text>
+          <View style={{ flexDirection: "row", alignItems: "center" }}>
+            <TouchableOpacity>
+              <View
+                style={[
+                  styles.changeRepButton,
+                  {
+                    backgroundColor: "#000",
+                    borderColor: theme.colors.primary,
+                    borderWidth: 1,
+                  },
+                ]}
+              >
+                <Entypo name="minus" size={16} color={theme.colors.primary} />
+              </View>
+            </TouchableOpacity>
+            <View style={{ alignItems: "center", justifyContent: "center" }}>
+              <MaterialCommunityIcons
+                name="weight"
+                size={70}
+                color={theme.colors.primary}
+              />
+              <Text
+                style={{
+                  color: "#000",
+                  position: "absolute",
+                  bottom: 10,
+                  fontSize: 20,
+                }}
+              >
+                225
+              </Text>
+            </View>
+            <TouchableOpacity>
+              <View style={styles.changeRepButton}>
+                <Entypo name="plus" size={16} color="#000" />
+              </View>
+            </TouchableOpacity>
+          </View>
         </View>
       </Modal>
     </View>
@@ -153,10 +244,21 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.primary,
     justifyContent: "center",
     alignItems: "center",
-    marginRight: 5,
+    marginRight: 2,
+    marginLeft: 2,
   },
   buttonText: {
-    color: "white",
+    color: "#fff",
+  },
+  changeRepButton: {
+    height: 20,
+    width: 20,
+    backgroundColor: theme.colors.primary,
+    borderRadius: 5,
+    justifyContent: "center",
+    alignItems: "center",
+    marginVertical: 5,
+    alignSelf: "center",
   },
   modalContent: {
     alignSelf: "center",
@@ -183,5 +285,8 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     alignItems: "center",
     marginBottom: 10,
+  },
+  editContainer: {
+    flexDirection: "row",
   },
 });
