@@ -8,6 +8,7 @@ import UilRestaurant from "@iconscout/react-native-unicons/icons/uil-restaurant"
 import UilAnalytics from "@iconscout/react-native-unicons/icons/uil-analytics";
 import HomeScreen from "../screens/HomeScreen";
 import WorkoutsScreen from "../screens/WorkoutsScreen";
+import NutritionScreen from "../screens/NutritionScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -48,7 +49,7 @@ const AppNavigator = () => {
       />
       <Tab.Screen
         name="Nutrition"
-        component={HomeScreen}
+        component={NutritionScreen}
         options={{
           headerShown: false,
           tabBarIcon: ({ color, size }) => (
