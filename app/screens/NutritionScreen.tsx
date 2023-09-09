@@ -3,6 +3,7 @@ import { StyleSheet, FlatList, View, Image, Text } from "react-native";
 import Screen from "../components/Screen";
 import theme from "../config/theme";
 import MealItem from "../components/MealItem";
+import CalorieGoal from "../components/CalorieGoal";
 
 interface Meal {
   id: number;
@@ -17,7 +18,7 @@ const NutritionScreen: React.FC = () => {
 
   const renderItem = ({ item }: { item: Meal }) => {
     if (item.id === 0) {
-      return <View></View>;
+      return <CalorieGoal />;
     } else {
       return <MealItem meal={item} onButtonPress={handleButtonPress} />;
     }
@@ -47,33 +48,39 @@ const styles = StyleSheet.create({
 
 const meals = [
   {
+    id: 0,
+    title: "Omelette",
+    description: "Cal: 250, Pro :30, Fat: 10,  Crbs: 50",
+    imageUrl: require("../../assets/images/meals/eggs.jpg"),
+  },
+  {
     id: 1,
     title: "Omelette",
-    description: "Calories: 250, Protein :30, Fat: 10,  Carbs: 50",
+    description: "Cal: 250, Pro :30, Fat: 10,  Crbs: 50",
     imageUrl: require("../../assets/images/meals/eggs.jpg"),
   },
   {
     id: 2,
     title: "Pancakes and fruits",
-    description: "Calories: 250, Protein :30, Fat: 10,  Carbs: 50",
+    description: "Cal: 250, Pro :30, Fat: 10,  Crbs: 50",
     imageUrl: require("../../assets/images/meals/pancakes.jpg"),
   },
   {
     id: 3,
     title: "Shrimp and rice",
-    description: "Calories: 250, Protein :30, Fat: 10,  Carbs: 50",
+    description: "Cal: 250, Pro :30, Fat: 10,  Crbs: 50",
     imageUrl: require("../../assets/images/meals/shrimp.jpg"),
   },
   {
     id: 4,
     title: "Burrito",
-    description: "Calories: 250, Protein :30, Fat: 10,  Carbs: 50",
+    description: "Cal: 250, Pro :30, Fat: 10,  Crbs: 50",
     imageUrl: require("../../assets/images/meals/burrito.jpg"),
   },
   {
     id: 5,
     title: "Noodles with mushrooms",
-    description: "Calories: 250, Protein :30, Fat: 10,  Carbs: 50",
+    description: "Cal: 250, Pro :30, Fat: 10,  Crbs: 50",
     imageUrl: require("../../assets/images/meals/noodles.jpg"),
   },
 ];
