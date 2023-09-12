@@ -1,11 +1,13 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
+import Screen from "../components/Screen";
+import HomeCard from "../components/HomeCard";
 
 const HomeScreen: React.FC = () => {
   return (
-    <View style={styles.container}>
-      <Text>Home Screen</Text>
-    </View>
+    <Screen>
+      <HomeCard />
+    </Screen>
   );
 };
 

@@ -9,7 +9,7 @@ import Animated, {
 import Svg, { G, Rect } from "react-native-svg";
 import { ReText } from "react-native-redash";
 
-import theme from "../config/theme";
+import theme from "../config/Theme";
 
 const AnimatedRect = Animated.createAnimatedComponent(Rect);
 

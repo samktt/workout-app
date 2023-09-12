@@ -2,7 +2,7 @@ import React from "react";
 import { View, StyleSheet, Text } from "react-native";
 import CircularProgress from "react-native-circular-progress-indicator";
 
-import theme from "../config/theme";
+import theme from "../config/Theme";
 
 function CircularMacros({
   value = 60,

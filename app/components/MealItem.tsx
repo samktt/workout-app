@@ -5,7 +5,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import Modal from "react-native-modal";
 
-import theme from "../config/theme";
+import theme from "../config/Theme";
 
 interface MealItemProps {
   meal: {

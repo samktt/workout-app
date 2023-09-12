@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, FlatList, View, Image, Text } from "react-native";
 import Screen from "../components/Screen";
-import theme from "../config/theme";
+import theme from "../config/Theme";
 import MealItem from "../components/MealItem";
 import CalorieGoal from "../components/CalorieGoal";
 
