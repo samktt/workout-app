@@ -35,5 +35,5 @@ yarn-error.*
 *.tsbuildinfo
 
 # misc
-assets/images
+assets
 app/config/exerciseImage.js

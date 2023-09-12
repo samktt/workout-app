@@ -1,6 +1,6 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import theme from "../config/theme";
+import theme from "../config/Theme";
 
 import UilDumbbell from "@iconscout/react-native-unicons/icons/uil-dumbbell";
 import UilHome from "@iconscout/react-native-unicons/icons/uil-estate";
