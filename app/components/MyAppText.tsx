@@ -2,30 +2,37 @@ import React from "react";
 import { Text as RNText, StyleSheet, TextProps } from "react-native";
 import { useFonts } from "expo-font";
 
-const customFont = "Poppins-Regular";
+const customFontRegular = "Poppins-Regular";
+const customFontBold = "Poppins-Bold";
 
 const Text: React.FC<MyAppTextProps> = (props) => {
   const [fontsLoaded] = useFonts({
-    [customFont]: require("../../assets/fonts/Poppins/Poppins-Regular.ttf"),
+    [customFontRegular]: require("../../assets/fonts/Poppins/Poppins-Regular.ttf"),
+    [customFontBold]: require("../../assets/fonts/Poppins/Poppins-Bold.ttf"), // Load your bold font
   });
 
   if (!fontsLoaded) {
     return null;
   }
 
+  const { style, fontWeight, ...restProps } = props;
+
+  const fontFamily = fontWeight === "bold" ? customFontBold : customFontRegular;
+
   return (
-    <RNText style={[styles.defaultText, props.style]}>{props.children}</RNText>
+    <RNText style={[styles.defaultText, { fontFamily }, style]} {...restProps}>
+      {props.children}
+    </RNText>
   );
 };
 
 interface MyAppTextProps extends TextProps {
   children: React.ReactNode;
+  fontWeight?: "normal" | "bold";
 }
 
 const styles = StyleSheet.create({
-  defaultText: {
-    fontFamily: customFont,
-  },
+  defaultText: {},
 });
 
 export default Text;

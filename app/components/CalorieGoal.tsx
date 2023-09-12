@@ -1,20 +1,12 @@
 import React from "react";
-import {
-  View,
-  StyleSheet,
-  Dimensions,
-  ViewStyle,
-  TextStyle,
-} from "react-native";
+import { View, StyleSheet } from "react-native";
 import ProgressBar from "./ProgressBar";
 import CircularMacros from "./CircularMacros";
 
 const CalorieGoal: React.FC = () => {
-  const progressBarWidth = Dimensions.get("window").width - 60;
-
   return (
     <View style={styles.container}>
-      <ProgressBar progress={7} />
+      <ProgressBar progress={75} />
       <View style={styles.circularContainer}>
         <CircularMacros radius={35} label="PROTEIN" />
         <CircularMacros radius={35} label="FATS" />
@@ -31,7 +23,7 @@ const styles = StyleSheet.create({
   container: {},
   progressBarText: {
     color: "#fff",
-    fontSize: 17,
+    fontSize: 16,
   },
   progressBarSuffixText: {
     color: "#C2C5C7",
@@ -43,7 +35,7 @@ const styles = StyleSheet.create({
   circularContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
-    paddingHorizontal: 30,
     marginBottom: 30,
+    marginTop: 10,
   },
 });

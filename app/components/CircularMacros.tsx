@@ -71,12 +71,12 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     color: "#fff",
     fontWeight: "200",
-    fontSize: 17,
+    fontSize: 16,
   },
   denominator: {
     color: "#fff",
     fontWeight: "200",
     alignSelf: "center",
-    fontSize: 17,
+    fontSize: 16,
   },
 });
