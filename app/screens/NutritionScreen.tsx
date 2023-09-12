@@ -18,7 +18,11 @@ const NutritionScreen: React.FC = () => {
 
   const renderItem = ({ item }: { item: Meal }) => {
     if (item.id === 0) {
-      return <CalorieGoal />;
+      return (
+        <View style={styles.calorieGoalContainer}>
+          <CalorieGoal />
+        </View>
+      );
     } else {
       return <MealItem meal={item} onButtonPress={handleButtonPress} />;
     }
@@ -43,6 +47,9 @@ const styles = StyleSheet.create({
     height: 1,
     marginHorizontal: 20,
     backgroundColor: theme.colors.grey0,
+  },
+  calorieGoalContainer: {
+    paddingHorizontal: 20,
   },
 });
 
