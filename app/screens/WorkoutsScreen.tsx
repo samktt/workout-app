@@ -1,8 +1,13 @@
 import React from "react";
 import { StyleSheet, FlatList, View, Image, Text } from "react-native";
+
 import Screen from "../components/Screen";
 import WorkoutItem from "../components/WorkoutItem";
-import theme from "../config/Theme";
+import Theme from "../config/Theme";
+import TopCalendar from "../components/TopCalendar";
+// @ts-ignore
+import UilUserCircle from "@iconscout/react-native-unicons/icons/uil-user-circle";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 interface WorkoutSet {
   reps: number;
@@ -24,13 +29,24 @@ const WorkoutsScreen: React.FC = () => {
   const renderItem = ({ item }: { item: Workout }) => {
     if (item.id === 0) {
       return (
-        <View style={styles.targetMuscleImageContainer}>
-          <Image source={item.imageUrl} style={styles.image} />
-          <Image
-            source={item.frontImageUrl ?? item.imageUrl}
-            style={styles.image}
-          />
-        </View>
+        <>
+          <View style={styles.topBarContainer}>
+            <MaterialCommunityIcons
+              name="weight-lifter"
+              size={30}
+              color={Theme.colors.grey2}
+            />
+            <TopCalendar />
+            <UilUserCircle color={Theme.colors.grey2} size={30} />
+          </View>
+          <View style={styles.targetMuscleImageContainer}>
+            <Image source={item.imageUrl} style={styles.image} />
+            <Image
+              source={item.frontImageUrl ?? item.imageUrl}
+              style={styles.image}
+            />
+          </View>
+        </>
       );
     } else {
       return <WorkoutItem workout={item} onButtonPress={handleButtonPress} />;
@@ -55,13 +71,21 @@ const styles = StyleSheet.create({
   separator: {
     height: 1,
     marginHorizontal: 20,
-    backgroundColor: theme.colors.grey0,
+    backgroundColor: Theme.colors.grey0,
   },
   image: { height: 300, width: 150, resizeMode: "contain" },
   targetMuscleImageContainer: {
     marginBottom: 20,
     flexDirection: "row",
     justifyContent: "center",
+  },
+  topBarContainer: {
+    justifyContent: "space-between",
+    alignItems: "center",
+    flexDirection: "row",
+    paddingHorizontal: 20,
+    marginBottom: 20,
+    height: 30,
   },
 });
 

@@ -16,6 +16,7 @@ import SwitchTabButton from "../components/SwitchTabButton";
 
 // @ts-ignore
 import UilUserCircle from "@iconscout/react-native-unicons/icons/uil-user-circle";
+import ProgressGraph from "../components/ProgressGraph";
 
 // @ts-ignore
 const HomeScreen: React.FC = ({ navigation }) => {
@@ -42,8 +43,12 @@ const HomeScreen: React.FC = ({ navigation }) => {
         <Text fontWeight="bold" style={styles.sectionText}>
           NUTRITION
         </Text>
-
         <CalorieGoal />
+
+        <Text fontWeight="bold" style={styles.sectionText}>
+          PROGRESS
+        </Text>
+        <ProgressGraph />
       </ScrollView>
     </Screen>
   );
@@ -60,7 +65,7 @@ const styles = StyleSheet.create({
   },
   scrollView: {
     flex: 1,
-    padding: 20,
+    paddingHorizontal: 20,
   },
   sectionText: {
     fontSize: 15,
@@ -77,5 +82,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     marginBottom: 20,
     justifyContent: "space-between",
+    height: 30,
   },
 });
