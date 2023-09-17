@@ -1,9 +1,15 @@
 import React from "react";
 import { StyleSheet, FlatList, View, Image, Text } from "react-native";
+
 import Screen from "../components/Screen";
 import theme from "../config/Theme";
 import MealItem from "../components/MealItem";
 import CalorieGoal from "../components/CalorieGoal";
+// @ts-ignore
+import UilUserCircle from "@iconscout/react-native-unicons/icons/uil-user-circle";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import TopCalendar from "../components/TopCalendar";
+import Theme from "../config/Theme";
 
 interface Meal {
   id: number;
@@ -19,9 +25,20 @@ const NutritionScreen: React.FC = () => {
   const renderItem = ({ item }: { item: Meal }) => {
     if (item.id === 0) {
       return (
-        <View style={styles.calorieGoalContainer}>
-          <CalorieGoal />
-        </View>
+        <>
+          <View style={styles.topBarContainer}>
+            <MaterialCommunityIcons
+              name="food"
+              size={30}
+              color={Theme.colors.grey2}
+            />
+            <TopCalendar />
+            <UilUserCircle color={Theme.colors.grey2} size={30} />
+          </View>
+          <View style={styles.calorieGoalContainer}>
+            <CalorieGoal />
+          </View>
+        </>
       );
     } else {
       return <MealItem meal={item} onButtonPress={handleButtonPress} />;
@@ -50,6 +67,15 @@ const styles = StyleSheet.create({
   },
   calorieGoalContainer: {
     paddingHorizontal: 20,
+    marginBottom: 30,
+  },
+  topBarContainer: {
+    justifyContent: "space-between",
+    alignItems: "center",
+    flexDirection: "row",
+    paddingHorizontal: 20,
+    marginBottom: 20,
+    height: 30,
   },
 });
 

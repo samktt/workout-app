@@ -35,7 +35,6 @@ const styles = StyleSheet.create({
   circularContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
-    marginBottom: 30,
     marginTop: 10,
   },
 });

@@ -9,6 +9,7 @@ import UilAnalytics from "@iconscout/react-native-unicons/icons/uil-analytics";
 import HomeScreen from "../screens/HomeScreen";
 import WorkoutsScreen from "../screens/WorkoutsScreen";
 import NutritionScreen from "../screens/NutritionScreen";
+import ProgressScreen from "../screens/ProgressScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -59,7 +60,7 @@ const BottomTabNavigator = () => {
       />
       <Tab.Screen
         name="Progress"
-        component={HomeScreen}
+        component={ProgressScreen}
         options={{
           headerShown: false,
           tabBarIcon: ({ color, size }) => (
