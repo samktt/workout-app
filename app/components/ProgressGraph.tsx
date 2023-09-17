@@ -16,7 +16,7 @@ interface DataPoint {
 const generateRandomData = (numPoints: number): DataPoint[] => {
   const data: DataPoint[] = [];
   for (let i = 0; i < numPoints; i++) {
-    data.push({ x: `${i + 1}`, y: Math.floor(Math.random() * 100) }); // Modify the range as needed
+    data.push({ x: `${i + 1}`, y: Math.floor(Math.random() * 100) });
   }
   return data;
 };
@@ -48,7 +48,6 @@ const ProgressGraph: React.FC = () => {
 
   return (
     <View>
-      {/* {fun()} */}
       <View style={styles.progressionCheckList}>{renderButtons()}</View>
 
       <View>
@@ -97,6 +96,8 @@ const ProgressGraph: React.FC = () => {
   );
 };
 
+export default ProgressGraph;
+
 const styles = StyleSheet.create({
   progressionCheckList: {
     flexDirection: "row",
@@ -105,5 +106,3 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 });
-
-export default ProgressGraph;
