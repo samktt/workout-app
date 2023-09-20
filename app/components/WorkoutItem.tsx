@@ -6,11 +6,7 @@ import { AntDesign } from "@expo/vector-icons";
 import Modal from "react-native-modal";
 
 import theme from "../config/Theme";
-
-interface WorkoutSet {
-  reps: number;
-  actualReps: number;
-}
+import { WorkoutSet } from "../types/Workout.types";
 
 interface WorkoutItemProps {
   workout: {

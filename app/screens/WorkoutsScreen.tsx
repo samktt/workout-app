@@ -1,5 +1,11 @@
 import React from "react";
-import { StyleSheet, FlatList, View, Image, Text } from "react-native";
+import {
+  StyleSheet,
+  FlatList,
+  View,
+  Image,
+  TouchableOpacity,
+} from "react-native";
 
 import Screen from "../components/Screen";
 import WorkoutItem from "../components/WorkoutItem";
@@ -9,18 +15,8 @@ import TopCalendar from "../components/TopCalendar";
 import UilUserCircle from "@iconscout/react-native-unicons/icons/uil-user-circle";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-interface WorkoutSet {
-  reps: number;
-  actualReps: number;
-}
-
-interface Workout {
-  id: number;
-  title: string;
-  imageUrl: number;
-  frontImageUrl?: number;
-  sets: WorkoutSet[];
-}
+import { Workout } from "../types/Workout.types";
+import { addWorkoutSet } from "../api/WorkoutSetsApi";
 
 const WorkoutsScreen: React.FC = () => {
   const handleButtonPress = (workoutId: number) => {};
@@ -37,7 +33,16 @@ const WorkoutsScreen: React.FC = () => {
               color={Theme.colors.grey2}
             />
             <TopCalendar />
-            <UilUserCircle color={Theme.colors.grey2} size={30} />
+            <TouchableOpacity
+            // onPress={async () => {
+            //   await addWorkoutSet(0, {
+            //     reps: 0,
+            //     actualReps: 0,
+            //   });
+            // }}
+            >
+              <UilUserCircle color={Theme.colors.grey2} size={30} />
+            </TouchableOpacity>
           </View>
           <View style={styles.targetMuscleImageContainer}>
             <Image source={item.imageUrl} style={styles.image} />

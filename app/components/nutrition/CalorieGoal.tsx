@@ -1,6 +1,6 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import ProgressBar from "./ProgressBar";
+import ProgressBar from "../ProgressBar";
 import CircularMacros from "./CircularMacros";
 
 const CalorieGoal: React.FC = () => {
