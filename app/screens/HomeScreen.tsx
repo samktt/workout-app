@@ -9,14 +9,14 @@ import {
 
 import Text from "../components/MyAppText";
 import Screen from "../components/Screen";
-import HomeCard from "../components/HomeCard";
+import HomeCard from "../components/home/HomeCard";
 import Theme from "../config/Theme";
-import CalorieGoal from "../components/CalorieGoal";
-import SwitchTabButton from "../components/SwitchTabButton";
+import CalorieGoal from "../components/nutrition/CalorieGoal";
+import SwitchTabButton from "../components/home/SwitchTabButton";
 
 // @ts-ignore
 import UilUserCircle from "@iconscout/react-native-unicons/icons/uil-user-circle";
-import ProgressGraph from "../components/ProgressGraph";
+import ProgressGraph from "../components/graph/ProgressGraph";
 
 // @ts-ignore
 const HomeScreen: React.FC = ({ navigation }) => {

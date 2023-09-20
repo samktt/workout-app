@@ -4,7 +4,7 @@ import { View, StyleSheet, ScrollView } from "react-native";
 import Text from "../components/MyAppText";
 import Theme from "../config/Theme";
 import Screen from "../components/Screen";
-import ProgressGraph from "../components/ProgressGraph";
+import ProgressGraph from "../components/graph/ProgressGraph";
 
 const ProgressScreen: React.FC = () => {
   return (

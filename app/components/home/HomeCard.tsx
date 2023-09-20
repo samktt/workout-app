@@ -1,13 +1,13 @@
 import React from "react";
 import { StyleSheet, View, Image } from "react-native";
-import theme from "../config/Theme";
-import Text from "./MyAppText";
+import theme from "../../config/Theme";
+import Text from "../MyAppText";
 
 const HomeCard: React.FC = () => {
   return (
     <View style={styles.container}>
       <Image
-        source={require("../../assets/images/icon/iconSmall.png")}
+        source={require("../../../assets/images/icon/iconSmall.png")}
         style={styles.image}
       />
       <Text style={styles.quote}>

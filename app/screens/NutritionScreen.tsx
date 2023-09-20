@@ -3,8 +3,8 @@ import { StyleSheet, FlatList, View, Image, Text } from "react-native";
 
 import Screen from "../components/Screen";
 import theme from "../config/Theme";
-import MealItem from "../components/MealItem";
-import CalorieGoal from "../components/CalorieGoal";
+import MealItem from "../components/nutrition/MealItem";
+import CalorieGoal from "../components/nutrition/CalorieGoal";
 // @ts-ignore
 import UilUserCircle from "@iconscout/react-native-unicons/icons/uil-user-circle";
 import { MaterialCommunityIcons } from "@expo/vector-icons";

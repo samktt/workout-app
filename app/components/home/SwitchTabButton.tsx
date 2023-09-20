@@ -1,6 +1,6 @@
 import React from "react";
 import { TouchableOpacity, Text, StyleSheet } from "react-native";
-import Theme from "../config/Theme";
+import Theme from "../../config/Theme";
 
 interface SwitchTabButtonProps {
   onPress: () => void;
