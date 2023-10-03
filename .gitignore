@@ -38,3 +38,4 @@ yarn-error.*
 # misc
 assets
 app/config/exerciseImage.js
+app/config/Firebase.ts
