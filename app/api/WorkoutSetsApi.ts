@@ -1,20 +1,34 @@
-import { collection, addDoc, query, where, getDocs } from "firebase/firestore";
+import {
+  collection,
+  addDoc,
+  query,
+  where,
+  getDocs,
+  Timestamp,
+} from "firebase/firestore";
 
 import { db } from "../config/Firebase";
 import { WorkoutSet } from "../types/Workout.types";
 
-// Function to add a workout set to Firestore
-export const addWorkoutSet = async (
-  userId: number,
-  workoutSetData: WorkoutSet
+export const addWorkout = async (
+  userId: string,
+  exercise: string,
+  sets: WorkoutSet[]
 ) => {
+  const workoutRef = collection(db, `users/${userId}/workouts`);
+  const timestamp = Timestamp.fromDate(new Date());
+
   try {
-    console;
-    const docRef = await addDoc(collection(db, "workoutSets"), workoutSetData);
+    const docRef = await addDoc(workoutRef, {
+      exercise: exercise,
+      sets: sets,
+      timestamp: timestamp,
+    });
+
     console.log("Document written with ID: ", docRef.id);
     return docRef.id;
   } catch (error) {
-    console.error("Error adding workout set: ", error);
+    console.error("Error adding workout: ", error);
     throw error;
   }
 };

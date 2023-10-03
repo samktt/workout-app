@@ -16,7 +16,7 @@ import UilUserCircle from "@iconscout/react-native-unicons/icons/uil-user-circle
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import { Workout } from "../types/Workout.types";
-import { addWorkoutSet } from "../api/WorkoutSetsApi";
+import { addWorkout } from "../api/WorkoutSetsApi";
 
 const WorkoutsScreen: React.FC = () => {
   const handleButtonPress = (workoutId: number) => {};
@@ -34,12 +34,18 @@ const WorkoutsScreen: React.FC = () => {
             />
             <TopCalendar />
             <TouchableOpacity
-            // onPress={async () => {
-            //   await addWorkoutSet(0, {
-            //     reps: 0,
-            //     actualReps: 0,
-            //   });
-            // }}
+              onPress={async () => {
+                await addWorkout("1", "Squats", [
+                  {
+                    reps: 5,
+                    actualReps: 3,
+                  },
+                  {
+                    reps: 8,
+                    actualReps: 8,
+                  },
+                ]);
+              }}
             >
               <UilUserCircle color={Theme.colors.grey2} size={30} />
             </TouchableOpacity>
