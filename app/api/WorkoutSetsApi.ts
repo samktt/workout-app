@@ -2,33 +2,66 @@ import {
   collection,
   addDoc,
   query,
-  where,
   getDocs,
-  Timestamp,
+  doc,
+  updateDoc,
 } from "firebase/firestore";
 
 import { db } from "../config/Firebase";
-import { WorkoutSet } from "../types/Workout.types";
+import { ExerciseItem } from "../types/Workout.types";
 
-export const addWorkout = async (
+export const addExercise = async (
   userId: string,
-  exercise: string,
-  sets: WorkoutSet[]
+  exerciseItem: ExerciseItem
 ) => {
   const workoutRef = collection(db, `users/${userId}/workouts`);
-  const timestamp = Timestamp.fromDate(new Date());
 
   try {
-    const docRef = await addDoc(workoutRef, {
-      exercise: exercise,
-      sets: sets,
-      timestamp: timestamp,
-    });
+    const docRef = await addDoc(workoutRef, exerciseItem);
 
-    console.log("Document written with ID: ", docRef.id);
+    console.log("Exercise added with ID: ", docRef.id);
     return docRef.id;
   } catch (error) {
-    console.error("Error adding workout: ", error);
+    console.error("Error adding exercise: ", error);
+    throw error;
+  }
+};
+
+export const getUserExercises = async (userId: string) => {
+  const workoutRef = collection(db, `users/${userId}/workouts`);
+  const q = query(workoutRef);
+
+  try {
+    const querySnapshot = await getDocs(q);
+    const workouts: ExerciseItem[] = [];
+
+    querySnapshot.forEach((doc) => {
+      const exerciseItem: ExerciseItem = {
+        id: doc.id,
+        ...doc.data(),
+      } as ExerciseItem;
+      workouts.push(exerciseItem);
+    });
+
+    return workouts;
+  } catch (error) {
+    console.error("Error fetching user workouts: ", error);
+    throw error;
+  }
+};
+
+export const updateWorkout = async (
+  userId: string,
+  workoutId: string,
+  updatedData: ExerciseItem
+) => {
+  const workoutRef = doc(db, `users/${userId}/workouts`, workoutId);
+
+  try {
+    await updateDoc(workoutRef, updatedData);
+    console.log("Workout updated successfully!");
+  } catch (error) {
+    console.error("Error updating workout: ", error);
     throw error;
   }
 };
