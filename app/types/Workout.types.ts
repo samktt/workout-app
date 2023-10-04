@@ -10,3 +10,9 @@ export type Workout = {
   frontImageUrl?: number;
   sets: WorkoutSet[];
 };
+
+export type ExerciseItem = {
+  id: string;
+  exercise: string;
+  sets: WorkoutSet[];
+};

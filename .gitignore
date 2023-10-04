@@ -39,3 +39,4 @@ yarn-error.*
 assets
 app/config/exerciseImage.js
 app/config/Firebase.ts
+app/config/Auth.ts
