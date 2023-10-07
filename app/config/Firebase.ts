@@ -16,7 +16,7 @@ const firebaseConfig = {
   appId: process.env.EXPO_PUBLIC_FIREBASE_APP_ID,
 };
 
-let app, auth, db;
+let app, auth: any, db: any;
 
 if (!getApps().length) {
   try {

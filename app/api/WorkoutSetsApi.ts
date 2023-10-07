@@ -6,17 +6,38 @@ import {
   doc,
   updateDoc,
 } from "firebase/firestore";
+import { onAuthStateChanged } from "firebase/auth";
 
-import { db } from "../config/Firebase";
 import { ExerciseItem } from "../types/Workout.types";
+import { auth, db } from "../config/Firebase";
+
+const getCurrentUserId = (): Promise<string | null> => {
+  return new Promise((resolve, reject) => {
+    onAuthStateChanged(
+      auth,
+      (user) => {
+        if (user) {
+          resolve(user.uid);
+        } else {
+          resolve(null);
+        }
+      },
+      reject
+    );
+  });
+};
 
 export const addExercise = async (
   userId: string,
   exerciseItem: ExerciseItem
 ) => {
-  const workoutRef = collection(db, `users/${userId}/workouts`);
-
   try {
+    const userId = await getCurrentUserId();
+
+    if (!userId) {
+      throw new Error("User is not authenticated");
+    }
+    const workoutRef = collection(db, `users/${userId}/workouts`);
     const docRef = await addDoc(workoutRef, exerciseItem);
 
     console.log("Exercise added with ID: ", docRef.id);
