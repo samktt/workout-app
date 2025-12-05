@@ -1,8 +1,7 @@
 # workout-app
+A lightweight but powerful workout tracker for logging reps, sets, exercises, and routines. I created this after struggling to find a simple, free tool that fit my workflow, and I hope it helps others stay organized and consistent in their training.
 
-Workout app offering tailored workout routines, customized meal planning, and seamless progress tracking.
-
-Here are some screenshots of the app:
+Some screenshots of the app:
 
 ![Screenshot 1](screenshots/sc1.png)
 ![Screenshot 2](screenshots/sc2.png)
